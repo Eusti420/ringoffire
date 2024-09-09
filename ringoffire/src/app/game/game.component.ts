@@ -6,11 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog'; // Hier den MatDialog-Service importieren
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { GameInfoComponent } from '../game-info/game-info.component';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [CommonModule, PlayerComponent, MatButtonModule, MatIconModule, MatDialogModule],
+  imports: [CommonModule, PlayerComponent, MatButtonModule, MatIconModule, MatDialogModule, GameInfoComponent],
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'] // Korrektur: "styleUrl" zu "styleUrls"
 })
@@ -35,9 +36,10 @@ export class GameComponent implements OnInit {
     if (!this.pickCardAnimation) {
       this.pickCardAnimation = true;
       this.currentCard = this.game.stack.pop() ?? '';
-      console.log('New card: ' + this.currentCard);
-      console.log('game is', this.game);
 
+      this.game.currentPlayer++;
+      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+    
       setTimeout(() => {
         this.pickCardAnimation = false;
         this.game.playedCards.push(this.currentCard);
