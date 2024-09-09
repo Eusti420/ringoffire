@@ -46,10 +46,10 @@ export class GameComponent implements OnInit {
   };
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddPlayerComponent); // Korrektur: Komma entfernt
+    const dialogRef = this.dialog.open(DialogAddPlayerComponent); 
 
-    dialogRef.afterClosed().subscribe((result: any) => { // result-Typ explizit angeben
-      console.log('The dialog was closed', result);
+    dialogRef.afterClosed().subscribe((name: string) => { 
+      this.game.players.push(name);
     });
   }
 }

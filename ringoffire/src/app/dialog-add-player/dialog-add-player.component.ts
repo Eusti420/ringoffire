@@ -9,9 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-dialog-add-player',
   standalone: true,
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule], // FormsModule hinzufügen
+  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule], 
   templateUrl: './dialog-add-player.component.html',
-  styleUrls: ['./dialog-add-player.component.scss'] // Korrektur von "styleUrl" zu "styleUrls"
+  styleUrls: ['./dialog-add-player.component.scss'] 
 })
 export class DialogAddPlayerComponent {
   name: string = '';  // Eigenschaft "name" hinzufügen
